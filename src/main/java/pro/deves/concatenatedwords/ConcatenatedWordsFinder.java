@@ -25,7 +25,7 @@ public class ConcatenatedWordsFinder {
         Preconditions.checkArgument(isNotEmpty(fileName), "fileName must be not empty");
 
         sortedByLengthReadWords = getWordsSetSortedByLength(fileName);
-        Preconditions.checkState(!sortedByLengthReadWords.isEmpty(), "The words set is empty");
+        Preconditions.checkState(sortedByLengthReadWords != null && !sortedByLengthReadWords.isEmpty(), "The words set is empty");
 
         sortedByLengthReadWords.forEach(word -> {
             possibleConcatenatedWord = word;
@@ -54,7 +54,7 @@ public class ConcatenatedWordsFinder {
             String rightPart = word.substring(i + 1);
 
             if (sortedByLengthReadWords.contains(leftPart)) {
-                if (sortedByLengthReadWords.contains(rightPart)){
+                if (sortedByLengthReadWords.contains(rightPart)) {
                     concatenatedWords.add(possibleConcatenatedWord);
                     break;
                 }
